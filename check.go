@@ -17,9 +17,9 @@ func (c *QQClient) MsgCheck(msg string) (ok bool, err error) {
 		return
 	}
 
-	url := fmt.Sprintf("%s%s?access_token=%s", BaseUrl, MsgCheckUrl, accessToken)
+	url := fmt.Sprintf("%s%s?access_token=%s", baseUrl, msgCheckUrl, accessToken)
 	data := NewMsgCheckPost(accessToken, c.appID, msg)
-	result := &MsgCheckResult{}
+	result := &msgCheckResult{}
 	//发起api请求
 	err = c.http.Post(url, data, "application/json", result)
 	if err != nil {
@@ -44,7 +44,7 @@ func (c *QQClient) ImgCheck(imgUrl string) (ok bool, err error) {
 		return
 	}
 
-	url := fmt.Sprintf("%s%s?access_token=%s", BaseUrl, ImgCheckUrl, accessToken)
+	url := fmt.Sprintf("%s%s?access_token=%s", baseUrl, imgCheckUrl, accessToken)
 	//获取图片文件内容
 	bin, err := c.http.GetPic(imgUrl)
 	if err != nil {
@@ -77,7 +77,7 @@ func (c *QQClient) ImgCheck(imgUrl string) (ok bool, err error) {
 		return
 	}
 
-	result := &ImgCheckResult{}
+	result := &imgCheckResult{}
 	//发起api请求
 	err = c.http.FormatDataPost(url, data, w.FormDataContentType(), result)
 	if err != nil {
@@ -103,9 +103,9 @@ func (c *QQClient) MediaCheckAsync(mediaUrl string, mediaType int) (traceID stri
 		return
 	}
 
-	url := fmt.Sprintf("%s%s?access_token=%s", BaseUrl, MediaCheckUrl, accessToken)
+	url := fmt.Sprintf("%s%s?access_token=%s", baseUrl, mediaCheckUrl, accessToken)
 	data := NewMediaAsync(accessToken, c.appID, mediaUrl, strconv.Itoa(mediaType))
-	result := &MediaCheckAsyncResult{}
+	result := &mediaCheckAsyncResult{}
 	//发起api请求
 	err = c.http.Post(url, data, "application/json", result)
 	if err != nil {

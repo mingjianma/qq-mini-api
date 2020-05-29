@@ -9,17 +9,17 @@ import (
 	"net/http"
 )
 
-type HttpHelper struct {
+type httpHelper struct {
 	logger *zap.Logger
 	client *http.Client
 }
 
-func NewHttpHelper(logger *zap.Logger, client *http.Client) *HttpHelper {
-	return &HttpHelper{logger: logger, client: client}
+func NewHttpHelper(logger *zap.Logger, client *http.Client) *httpHelper {
+	return &httpHelper{logger: logger, client: client}
 }
 
 //http-GetPic
-func (c *HttpHelper) GetPic(url string) ([]byte, error) {
+func (c *httpHelper) GetPic(url string) ([]byte, error) {
 	resp, err := c.client.Get(url)
 
 	if err != nil {
@@ -33,7 +33,7 @@ func (c *HttpHelper) GetPic(url string) ([]byte, error) {
 }
 
 //http-Get
-func (c *HttpHelper) Get(url string, result QQResult) error {
+func (c *httpHelper) Get(url string, result qqResult) error {
 	resp, err := c.client.Get(url)
 
 	if err != nil {
@@ -61,7 +61,7 @@ func (c *HttpHelper) Get(url string, result QQResult) error {
 }
 
 //http-Json-Post
-func (c *HttpHelper) Post(url string, data interface{}, contentType string, result QQResult) error {
+func (c *httpHelper) Post(url string, data interface{}, contentType string, result qqResult) error {
 	jsonStr, err := json.Marshal(data)
 	if err != nil {
 		return err
@@ -82,7 +82,7 @@ func (c *HttpHelper) Post(url string, data interface{}, contentType string, resu
 }
 
 //http-FormatData-Post
-func (c *HttpHelper) FormatDataPost(url string, data *bytes.Buffer, contentType string, result QQResult) error {
+func (c *httpHelper) FormatDataPost(url string, data *bytes.Buffer, contentType string, result qqResult) error {
 	resp, err := c.client.Post(url, contentType, data)
 	if err != nil {
 		return err

@@ -1,77 +1,77 @@
 package qqapi
 
-type QQResult interface {
+type qqResult interface {
 	GetErr() int
 	GetErrMessage() string
 }
 
-type BaseResult struct {
+type baseResult struct {
 	ErrCode int    `json:"errcode"`
 	ErrMsg  string `json:"errmsg"`
 }
 
-type LoginResult struct {
-	BaseResult
+type loginResult struct {
+	baseResult
 	Openid     string `json:"openid"`
 	SessionKey string `json:"session_key"`
 	UnionId    string `json:"unionid"`
 }
 
-func (l *LoginResult) GetErr() int {
+func (l *loginResult) GetErr() int {
 	return l.ErrCode
 }
 
-func (l *LoginResult) GetErrMessage() string {
+func (l *loginResult) GetErrMessage() string {
 	return l.ErrMsg
 }
 
-type AccessTokenResult struct {
-	BaseResult
+type accessTokenResult struct {
+	baseResult
 	AccessToken string `json:"access_token"`
 	ExpiresIn   int64  `json:"expires_in"`
 }
 
-func (l *AccessTokenResult) GetErr() int {
+func (l *accessTokenResult) GetErr() int {
 	return l.ErrCode
 }
 
-func (l *AccessTokenResult) GetErrMessage() string {
+func (l *accessTokenResult) GetErrMessage() string {
 	return l.ErrMsg
 }
 
-type MsgCheckResult struct {
-	BaseResult
+type msgCheckResult struct {
+	baseResult
 }
 
-func (l *MsgCheckResult) GetErr() int {
+func (l *msgCheckResult) GetErr() int {
 	return l.ErrCode
 }
 
-func (l *MsgCheckResult) GetErrMessage() string {
+func (l *msgCheckResult) GetErrMessage() string {
 	return l.ErrMsg
 }
 
-type ImgCheckResult struct {
-	BaseResult
+type imgCheckResult struct {
+	baseResult
 }
 
-func (l *ImgCheckResult) GetErr() int {
+func (l *imgCheckResult) GetErr() int {
 	return l.ErrCode
 }
 
-func (l *ImgCheckResult) GetErrMessage() string {
+func (l *imgCheckResult) GetErrMessage() string {
 	return l.ErrMsg
 }
 
-type MediaCheckAsyncResult struct {
-	BaseResult
+type mediaCheckAsyncResult struct {
+	baseResult
 	TraceId string `json:"trace_id"`
 }
 
-func (l *MediaCheckAsyncResult) GetErr() int {
+func (l *mediaCheckAsyncResult) GetErr() int {
 	return l.ErrCode
 }
 
-func (l *MediaCheckAsyncResult) GetErrMessage() string {
+func (l *mediaCheckAsyncResult) GetErrMessage() string {
 	return l.ErrMsg
 }
