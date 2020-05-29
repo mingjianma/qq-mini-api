@@ -1,4 +1,4 @@
-module github.com/mingjianma/qq-mini-api
+module github.com/mingjianma/qqapi
 
 go 1.14
 
