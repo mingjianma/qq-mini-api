@@ -6,7 +6,7 @@ type msgCheckPost struct {
 	Content     string `json:"content"`
 }
 
-func NewMsgCheckPost(accessToken string, appID string, content string) *msgCheckPost {
+func newMsgCheckPost(accessToken string, appID string, content string) *msgCheckPost {
 	return &msgCheckPost{
 		AccessToken: accessToken,
 		AppID:       appID,
@@ -21,7 +21,7 @@ type mediaAsync struct {
 	MediaType   string `json:"media_type"`
 }
 
-func NewMediaAsync(accessToken string, appID string, mediaUrl string, mediaType string) *mediaAsync {
+func newMediaAsync(accessToken string, appID string, mediaUrl string, mediaType string) *mediaAsync {
 	return &mediaAsync{
 		AccessToken: accessToken,
 		AppID:       appID,

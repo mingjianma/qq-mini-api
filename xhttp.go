@@ -14,7 +14,7 @@ type httpHelper struct {
 	client *http.Client
 }
 
-func NewHttpHelper(logger *zap.Logger, client *http.Client) *httpHelper {
+func newHttpHelper(logger *zap.Logger, client *http.Client) *httpHelper {
 	return &httpHelper{logger: logger, client: client}
 }
 

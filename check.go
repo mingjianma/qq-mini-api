@@ -18,7 +18,7 @@ func (c *QQClient) MsgCheck(msg string) (ok bool, err error) {
 	}
 
 	url := fmt.Sprintf("%s%s?access_token=%s", baseUrl, msgCheckUrl, accessToken)
-	data := NewMsgCheckPost(accessToken, c.appID, msg)
+	data := newMsgCheckPost(accessToken, c.appID, msg)
 	result := &msgCheckResult{}
 	//发起api请求
 	err = c.http.Post(url, data, "application/json", result)
@@ -104,7 +104,7 @@ func (c *QQClient) MediaCheckAsync(mediaUrl string, mediaType int) (traceID stri
 	}
 
 	url := fmt.Sprintf("%s%s?access_token=%s", baseUrl, mediaCheckUrl, accessToken)
-	data := NewMediaAsync(accessToken, c.appID, mediaUrl, strconv.Itoa(mediaType))
+	data := newMediaAsync(accessToken, c.appID, mediaUrl, strconv.Itoa(mediaType))
 	result := &mediaCheckAsyncResult{}
 	//发起api请求
 	err = c.http.Post(url, data, "application/json", result)

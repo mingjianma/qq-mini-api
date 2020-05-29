@@ -20,7 +20,7 @@ type QQClient struct {
 func NewQQClient(appID string, appSecret string, logger *zap.Logger) *QQClient {
 	client := &http.Client{Timeout: 5 * time.Second}
 	url := fmt.Sprintf("%s%s?grant_type=client_credential&appid=%s&secret=%s", baseUrl, accessTokenUrl, appID, appSecret)
-	httpHelper := NewHttpHelper(logger, client)
+	httpHelper := newHttpHelper(logger, client)
 	return &QQClient{
 		appID:     appID,
 		appSecret: appSecret,
